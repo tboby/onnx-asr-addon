@@ -1,0 +1,24 @@
+---
+version: 0.1.0
+slug: onnx-asr
+name: ONNX ASR
+description: Speech-to-text with ONNX ASR
+url: https://github.com/tboby/tboby-addons/tree/main/example
+arch:
+  - amd64
+  - aarch64
+init: false
+discovery:
+  - wyoming
+backup_exclude:
+  - "models*"
+map:
+  - addon_config:rw
+options:
+  model: auto
+schema:
+  model: |
+    list(auto|tiny-int8|tiny|tiny.en|base-int8|base|base.en|small-int8|distil-small.en|small|small.en|distil-medium.en|medium-int8|medium|medium.en|large|large-v1|distil-large-v2|large-v2|distil-large-v3|large-v3|turbo|custom)
+ports:
+  "10300/tcp": null
+homeassistant: 2025.7.1

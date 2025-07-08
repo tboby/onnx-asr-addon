@@ -1,0 +1,2 @@
+ARG WYOMING_ONNX_ASR_VERSION
+FROM ghcr.io/tboby/wyoming-onnx-asr:v${WYOMING_ONNX_ASR_VERSION}

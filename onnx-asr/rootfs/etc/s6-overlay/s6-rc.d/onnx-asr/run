@@ -1,0 +1,32 @@
+#!/command/with-contenv bashio
+# vim: ft=bash
+# shellcheck shell=bash
+# ==============================================================================
+# Start ONNX ASR service
+# ==============================================================================
+flags=()
+
+if [ "$(uname -m)" == "x86_64" ] && ! grep -qw 'avx' /proc/cpuinfo; then
+    bashio::log.warning "Your CPU does not support Advanced Vector Extensions (AVX). ONNX ASR will run slower than normal."
+fi
+
+# model="$(bashio::config 'model')"
+# if [ "${model}" = 'custom' ]; then
+#     # Override with custom model
+#     model="$(bashio::config 'custom_model')"
+#     if [ -z "${model}" ]; then
+#       bashio::exit.nok "Custom model is not set"
+#     fi
+#     custom_model_type="$(bashio::config 'custom_model_type')"
+#     if [ "${custom_model_type}" = 'transformers' ]; then
+#       flags+=('--use-transformers')
+#     fi
+# fi
+
+if bashio::config.true 'debug_logging'; then
+    flags+=('--debug')
+fi
+
+# shellcheck disable=SC2068
+HF_HUB_CACHE=/data exec uv run -m wyoming_onnx_asr \
+    --uri 'tcp://0.0.0.0:10301'

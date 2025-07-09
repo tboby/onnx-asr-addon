@@ -3,7 +3,7 @@ version: 0.1.0
 slug: onnx-asr
 name: ONNX ASR
 description: Speech-to-text with ONNX ASR
-url: https://github.com/tboby/tboby-addons/tree/main/example
+url: https://github.com/tboby/tboby-addons/tree/main/onnx-asr
 arch:
   - amd64
   - aarch64
@@ -22,3 +22,4 @@ schema:
 ports:
   "10300/tcp": null
 homeassistant: 2025.7.1
+# image: tboby/{arch}-addon-onnx-asr

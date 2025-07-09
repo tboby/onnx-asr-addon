@@ -27,6 +27,8 @@ if bashio::config.true 'debug_logging'; then
     flags+=('--debug')
 fi
 
+cd /usr/src || exit
+
 # shellcheck disable=SC2068
-HF_HUB_CACHE=/data exec uv run -m wyoming_onnx_asr \
-    --uri 'tcp://0.0.0.0:10301'
+PYTHONUNBUFFERED=1 HF_HUB_CACHE=/data exec /root/.local/bin/uv run -m wyoming_onnx_asr \
+    --uri 'tcp://0.0.0.0:10301' ${flags[@]}

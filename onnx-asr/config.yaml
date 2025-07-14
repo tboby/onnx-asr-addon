@@ -15,10 +15,17 @@ backup_exclude:
 map:
   - addon_config:rw
 options:
-  model: auto
+  model_en: auto
+  model_multilingual: auto
+  debug_logging: false
 schema:
-  model: |
-    list(auto|tiny-int8|tiny|tiny.en|base-int8|base|base.en|small-int8|distil-small.en|small|small.en|distil-medium.en|medium-int8|medium|medium.en|large|large-v1|distil-large-v2|large-v2|distil-large-v3|large-v3|turbo|custom)
+  model_en: |
+    list(none|auto|nemo-parakeet-tdt-0.6b-v2|nemo-parakeet-rnnt-0.6b|nemo-parakeet-ctc-0.6b|onnx-community/whisper-base.en|onnx-community/whisper-tiny.en|onnx-community/whisper-small.en|custom)
+  custom_model_en: str?
+  model_multilingual: |
+    list(none|auto|whisper-base|onnx-community/whisper-base|onnx-community/whisper-tiny|onnx-community/whisper-small|onnx-community/whisper-large-v3-turbo|custom)
+  custom_model_multilingual: str?
+  debug_logging: bool
 ports:
   "10300/tcp": null
 homeassistant: 2025.7.1

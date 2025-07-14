@@ -13,18 +13,52 @@ if [ "$(uname -m)" == "x86_64" ] && ! grep -qw 'avx' /proc/cpuinfo; then
     bashio::log.warning "Your CPU does not support Advanced Vector Extensions (AVX). ONNX ASR will run slower than normal."
 fi
 
-# model="$(bashio::config 'model')"
-# if [ "${model}" = 'custom' ]; then
-#     # Override with custom model
-#     model="$(bashio::config 'custom_model')"
-#     if [ -z "${model}" ]; then
-#       bashio::exit.nok "Custom model is not set"
-#     fi
-#     custom_model_type="$(bashio::config 'custom_model_type')"
-#     if [ "${custom_model_type}" = 'transformers' ]; then
-#       flags+=('--use-transformers')
-#     fi
-# fi
+# Determine model based on language configuration
+modelEN="$(bashio::config 'model_en')"
+if [ "${modelEN}" = 'auto' ]; then
+    # Single English language - use parakeet for better performance
+    modelEN="nemo-parakeet-tdt-0.6b-v2"
+    bashio::log.info "Using parakeet model for English-only configuration"
+fi
+if [ "${modelEN}" = 'none' ]; then
+    modelEN=""
+fi
+# Determine model based on language configuration
+modelINT="$(bashio::config 'model_multilingual')"
+if [ "${modelINT}" = 'auto' ]; then
+    # Multiple languages or non-English - use whisper
+    modelINT="whisper-base"
+    bashio::log.info "Using whisper model for multi-language configuration"
+fi
+if [ "${modelINT}" = 'none' ]; then
+    modelINT=""
+fi
+
+
+# Handle custom model
+if [ "${modelEN}" = 'custom' ]; then
+    # Override with custom model
+    modelEN="$(bashio::config 'custom_model_en')"
+    if [ -z "${modelEN}" ]; then
+      bashio::exit.nok "Custom model (en) is not set"
+    fi
+fi
+
+if [ "${modelINT}" = 'custom' ]; then
+    # Override with custom model
+    modelINT="$(bashio::config 'custom_model_multilingual')"
+    if [ -z "${modelINT}" ]; then
+      bashio::exit.nok "Custom model (multilingual) is not set"
+    fi
+fi
+
+if [ -n "${modelEN}" ]; then
+    flags+=("--model-en" "${modelEN}")
+fi
+
+if [ -n "${modelINT}" ]; then
+    flags+=("--model-multilingual" "${modelINT}")
+fi
 
 if bashio::config.true 'debug_logging'; then
     flags+=('--debug')

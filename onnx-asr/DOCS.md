@@ -22,33 +22,45 @@ for more information.
 
 ## Configuration
 
-<!-- ### Option: `language`
+### Option: `model_en`
 
-Default language for the add-on. In Home Assist 2023.8+, multiple languages can be used simultaneously by different [Assist pipelines](https://www.home-assistant.io/voice_control/voice_remote_local_assistant/).
+ONNX ASR model that will be used for English transcription. Choose `custom` to use the model name in `custom_model`, which may be a HuggingFace model ID like "Systran/faster-distil-whisper-small.en".
 
-If you select "auto", the model will run **much** slower but will auto-detect the spoken language.
+The default model is `auto`, which selects `nemo-parakeet-tdt-0.6b-v2` for English-only configurations, or `whisper-base` for multi-language configurations.
 
-[Performance of supported languages](https://github.com/openai/whisper#available-models-and-languages)
+Available models, english only:
 
-[List of two-letter language codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -->
+- `auto` (select author's most efficient model)
+- `nemo-parakeet-tdt-0.6b-v2`
+- `nemo-parakeet-rnnt-0.6b`
+- `nemo-parakeet-ctc-0.6b`
+- `onnx-community/whisper-base.en`
+- `onnx-community/whisper-tiny.en`
+- `onnx-community/whisper-small.en`
+- `whisper-base`
 
-### Option: `model`
+### Option: `model_multilingual`
 
-ONNX ASR model that will be used for transcription. Choose `custom` to use the model name in `custom_model`, which may be a HuggingFace model ID like "Systran/faster-distil-whisper-small.en".
+ONNX ASR model that will be used for non-english transcription. Choose `custom` to use the model name in `custom_model`, which may be a HuggingFace model ID like "Systran/faster-distil-whisper-small.en".
 
-The default model is `auto`, which selects `nemo-parakeet-tdt-0.6b-v2`.
+The default model is `auto`, which selects `whisper-base` for multi-language configurations, which is slightly slower than parakeet but supports a wide range of languages.
 
 Available models:
 
 - `auto` (select based on CPU)
-- `nemo-parakeet-tdt-0.6b-v2` (English only)
 - `whisper-base`
 - `onnx-community/whisper-tiny`
 - `onnx-community/whisper-base`
 - `onnx-community/whisper-small`
 - `onnx-community/whisper-large-v3-turbo`
 
-### Option: `custom_model`
+[Performance of supported languages](https://github.com/openai/whisper#available-models-and-languages)
+
+### Option: `custom_model_en`
+
+HuggingFace Hub model ID like "nvidia/stt_en_conformer_ctc_large". Only models supported by onnx-asr will work.
+
+### Option: `custom_model_multilingual`
 
 HuggingFace Hub model ID like "nvidia/stt_en_conformer_ctc_large". Only models supported by onnx-asr will work.
 

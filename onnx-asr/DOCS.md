@@ -1,5 +1,17 @@
 # Home Assistant Add-on: ONNX ASR
 
+This is a drop-in replacement for the Official Whisper Add-on, providing access to a different set of models.
+
+It may also run certain whisper models faster depending on your CPU.
+
+## ⚠️ Warning—Memory intense in default configuration
+
+It's strongly recommended you only use this Add-on on systems with more than 8GB of RAM.
+
+When configured in auto, the english model uses 2.5GB at all times.
+
+When configured in auto, the multilingual mode uses 1GB at all times.
+
 ## Installation
 
 Follow these steps to get the add-on installed on your system:

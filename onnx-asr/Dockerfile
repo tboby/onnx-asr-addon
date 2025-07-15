@@ -1,4 +1,5 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/base-debian:7.8.3
+# hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
 # Set shell
@@ -16,7 +17,7 @@ RUN \
     && rm -rf /var/lib/apt/lists/* \
     \
     && curl -LsSf https://astral.sh/uv/install.sh | sh \
-    && source $HOME/.local/bin/env \
+    && source "$HOME/.local/bin/env" \
     \
     && uv venv \
     && uv pip install "git+https://github.com/tboby/wyoming-onnx-asr@v${WYOMING_ONNX_ASR_VERSION}[cpu]"

@@ -8,7 +8,7 @@ Add-on documentation: <https://developers.home-assistant.io/docs/add-ons>
 
 ## Add-ons
 
-This repository contains the following add-ons
+This repository contains the following add-on
 
 ### [Example add-on](./example)
 

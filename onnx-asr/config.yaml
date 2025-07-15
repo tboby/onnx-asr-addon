@@ -1,5 +1,5 @@
 ---
-version: 0.1.0
+version: dev
 slug: onnx-asr
 name: ONNX ASR
 description: Speech-to-text with ONNX ASR

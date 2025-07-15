@@ -16,7 +16,7 @@ map:
   - addon_config:rw
 options:
   model_en: auto
-  model_multilingual: auto
+  model_multilingual: none
   debug_logging: false
 schema:
   model_en: |

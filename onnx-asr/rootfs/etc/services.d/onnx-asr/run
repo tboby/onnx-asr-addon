@@ -66,6 +66,9 @@ fi
 
 cd /usr/src || exit
 
+bashio::log.info "Starting server, note it may take 5-10 minutes to download the model(s)."
+bashio::log.info "Please don't restart the add-on or the download lose progress!"
+
 # shellcheck disable=SC2068
-PYTHONUNBUFFERED=1 HF_HUB_CACHE=/data exec /root/.local/bin/uv run -m wyoming_onnx_asr \
+PYTHONUNBUFFERED=1 HF_HUB_CACHE=/data/models exec /root/.local/bin/uv run -m wyoming_onnx_asr \
     --uri 'tcp://0.0.0.0:10301' ${flags[@]}

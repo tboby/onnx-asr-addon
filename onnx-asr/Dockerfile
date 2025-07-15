@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base-debian:bookworm
+ARG BUILD_FROM=ghcr.io/hassio-addons/base-debian:7.8.3
 FROM ${BUILD_FROM}
 
 # Set shell
@@ -10,7 +10,7 @@ ARG WYOMING_ONNX_ASR_VERSION
 
 RUN \
     apt-get update \
-    && apt-get install -y --no-install-recommends git \
+    && apt-get install -y --no-install-recommends git=1:2.39.5-0+deb12u2 \
     && apt-get autoclean \
     && apt-get purge \
     && rm -rf /var/lib/apt/lists/* \

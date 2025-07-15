@@ -10,11 +10,7 @@ WORKDIR /usr/src
 ARG WYOMING_ONNX_ASR_VERSION
 
 RUN \
-    apt-get update \
-    && apt-get install -y --no-install-recommends git=1:2.39.5-0+deb12u2 \
-    && apt-get autoclean \
-    && apt-get purge \
-    && rm -rf /var/lib/apt/lists/* \
+    apk add --no-cache git=2.49.1-r0 \
     \
     && curl -LsSf https://astral.sh/uv/install.sh | sh \
     && source "$HOME/.local/bin/env" \

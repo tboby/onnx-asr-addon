@@ -2,7 +2,7 @@
 
 ![Supports aarch64 Architecture][aarch64-shield] ![Supports amd64 Architecture][amd64-shield]
 
-Home Assistant add-on that uses [onnx-asr](https://github.com/guillaumekln/istupakov/onnx-asr/) for speech-to-text.
+Home Assistant add-on that uses [wyoming-onnx-asr](https://github.com/tboby/wyoming-onnx-asr) for speech-to-text.
 
 Notably, provides access to the [NVIDIA NeMo Parakeet-TDT](https://developer.nvidia.com/blog/turbocharge-asr-accuracy-and-speed-with-nvidia-nemo-parakeet-tdt/) model which should be significantly faster and more accurate than Whisper for English in most cases.
 

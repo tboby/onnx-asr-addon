@@ -4,6 +4,8 @@ This is a drop-in replacement for the Official Whisper Add-on, providing access 
 
 It may also run certain whisper models faster depending on your CPU.
 
+This is also available as a standalone docker container at [wyoming-onnx-asr](https://github.com/tboby/wyoming-onnx-asr)
+
 ## ⚠️ Warning—Memory intense in default configuration
 
 It's strongly recommended you only use this Add-on on systems with more than 8GB of RAM.

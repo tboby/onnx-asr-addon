@@ -8,5 +8,11 @@ on:
       - main
 
 jobs:
-  workflows:
-    uses: hassio-addons/workflows/.github/workflows/release-drafter.yaml@main
+  update_release_draft:
+    name: ✏️ Draft release
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚀 Run Release Drafter
+        uses: tboby/repository-updater@feat/use-uv-docker-builds
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -18,6 +18,6 @@ jobs:
     secrets:
       DISPATCH_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
     with:
-      repository: "repository"
+      repository: "addon-repository"
       repository_beta: "addon-repository-beta"
       repository_edge: "addon-repository-edge"

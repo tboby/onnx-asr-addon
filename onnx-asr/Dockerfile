@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install ONNX ASR
 WORKDIR /usr/src
-ARG WYOMING_ONNX_ASR_VERSION="0.3.1"
+ARG WYOMING_ONNX_ASR_VERSION="0.3.2"
 
 RUN \
     apt-get update \

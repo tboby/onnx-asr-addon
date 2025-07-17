@@ -21,4 +21,3 @@ jobs:
       repository: "repository"
       repository_beta: "addon-repository-beta"
       repository_edge: "addon-repository-edge"
-    

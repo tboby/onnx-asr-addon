@@ -23,7 +23,7 @@ schema:
     list(none|auto|nemo-parakeet-tdt-0.6b-v2|nemo-parakeet-rnnt-0.6b|nemo-parakeet-ctc-0.6b|onnx-community/whisper-base.en|onnx-community/whisper-tiny.en|onnx-community/whisper-small.en|custom)
   custom_model_en: str?
   model_multilingual: |
-    list(none|auto|whisper-base|onnx-community/whisper-base|onnx-community/whisper-tiny|onnx-community/whisper-small|onnx-community/whisper-large-v3-turbo|custom)
+    list(none|auto|nemo-parakeet-tdt-0.6b-v3|whisper-base|onnx-community/whisper-base|onnx-community/whisper-tiny|onnx-community/whisper-small|onnx-community/whisper-large-v3-turbo|custom)
   custom_model_multilingual: str?
   debug_logging: bool
 ports:

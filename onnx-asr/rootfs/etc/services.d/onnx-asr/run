@@ -18,7 +18,7 @@ modelEN="$(bashio::config 'model_en')"
 if [ "${modelEN}" = 'auto' ]; then
     # Single English language - use parakeet for better performance
     modelEN="nemo-parakeet-tdt-0.6b-v2"
-    bashio::log.info "Using parakeet model for English-only configuration"
+    bashio::log.info "Using parakeet v2 model for English-only configuration"
 fi
 if [ "${modelEN}" = 'none' ]; then
     modelEN=""
@@ -26,9 +26,9 @@ fi
 # Determine model based on language configuration
 modelINT="$(bashio::config 'model_multilingual')"
 if [ "${modelINT}" = 'auto' ]; then
-    # Multiple languages or non-English - use whisper
-    modelINT="whisper-base"
-    bashio::log.info "Using whisper model for multi-language configuration"
+    # Multiple languages or non-English - use parakeet v3
+    modelINT="nemo-parakeet-tdt-0.6b-v3"
+    bashio::log.info "Using parakeet v3 model for multi-language configuration"
 fi
 if [ "${modelINT}" = 'none' ]; then
     modelINT=""

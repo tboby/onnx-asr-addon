@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install ONNX ASR
 WORKDIR /usr/src
-ARG WYOMING_ONNX_ASR_VERSION="0.3.3"
+ARG WYOMING_ONNX_ASR_VERSION="0.4.1"
 
 RUN \
     apt-get update \
@@ -19,7 +19,7 @@ RUN \
     && curl -LsSf https://astral.sh/uv/install.sh | sh \
     && source "$HOME/.local/bin/env" \
     \
-    && uv venv \
+    && uv venv --python 3.13 \
     && uv pip install "git+https://github.com/tboby/wyoming-onnx-asr@v${WYOMING_ONNX_ASR_VERSION}[cpu]"
 
 WORKDIR /

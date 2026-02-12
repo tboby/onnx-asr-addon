@@ -70,5 +70,5 @@ bashio::log.info "Starting server, note it may take 5-10 minutes to download the
 bashio::log.info "Please don't restart the add-on or the download may lose progress!"
 
 # shellcheck disable=SC2068
-PYTHONUNBUFFERED=1 HF_HUB_CACHE=/data/models exec /root/.local/bin/uv run -m wyoming_onnx_asr \
+PYTHONUNBUFFERED=1 ONNX_ASR_MODEL_DIR=/data/models exec /root/.local/bin/uv run -m wyoming_onnx_asr \
     --uri 'tcp://0.0.0.0:10301' ${flags[@]}
